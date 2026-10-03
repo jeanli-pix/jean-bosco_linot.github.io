@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CanSat ENSEA 2025-2026 : un satellite de la taille d&#x27;une canette — Jean</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+<h1><a href="../index.html" style="color:inherit;text-decoration:none">Jean</a></h1>
+<p>Étudiant ingénieur à l&#x27;ENSEA, en électronique et informatique. Voici mes projets, expliqués : ce que chacun fait, comment il est construit et ce que j&#x27;en ai tiré.</p>
+</header>
+<main><article class="project">
+<a class="back" href="../index.html">Retour aux projets</a>
+<h1>CanSat ENSEA 2025-2026 : un satellite de la taille d&#x27;une canette</h1>
+<p class="meta">2025-2026 · Projet de deuxième année · équipe de 5 · en cours</p>
+<div class="tags"><span class="tag">STM32G431</span><span class="tag">FreeRTOS</span><span class="tag">KiCad</span><span class="tag">PCB 6 couches</span><span class="tag">LoRa</span><span class="tag">Python / PyQt5</span><span class="tag">OnShape</span></div>
+<p class="lead">Un satellite de 33 cl qui se largue d&#x27;un drone, déploie son parachute entre 75 et 90 m et cartographie le sol pendant la descente.</p>
+<dl class="facts"><dt>Contexte</dt><dd>Compétition CanSat C&#x27;space 2025-2026</dd><dt>Contraintes</dt><dd>330 mL et 350 g maximum</dd><dt>Électronique</dt><dd>PCB principal 6 couches, PCB d&#x27;interface 2 couches, STM32G431</dd><dt>Logiciel</dt><dd>C sous FreeRTOS, station sol en Python (Raspberry Pi 5)</dd><dt>Communication</dt><dd>LoRa SX1276, 869,53 MHz, protocole de télémétrie maison avec CRC</dd></dl>
+<h3>Le projet</h3><p>Un CanSat est un satellite de la taille d&#x27;une canette. Il est largué en altitude, déploie son parachute, puis mesure et transmet des données pendant la descente. Notre équipe a choisi la mission obligatoire (parachute), la miniaturisation, l&#x27;étude du sol et la caméra embarquée.</p><h3>Les missions visées</h3><ul><li>Déploiement : une coiffe protectrice inspirée du kirigami libère le parachute principal entre 75 et 90 m.</li><li>Miniaturisation : tout tient dans 330 mL et 350 g, grâce à un PCB à 6 couches et un parachute très léger.</li><li>Étude du sol : un lidar de 100 m balaie le terrain en spirale. Le boîtier en forme d&#x27;hélice fait tourner le CanSat, et une centrale inertielle plus un baromètre positionnent chaque point mesuré.</li><li>Caméra embarquée : un film de l&#x27;atterrissage avec une mini-caméra indépendante.</li></ul><h3>Électronique</h3><ul><li>Reverse engineering de la carte de l&#x27;équipe de l&#x27;an dernier, puis nouveau schéma adapté aux missions.</li><li>Capteurs : baromètre BMP581, centrale inertielle BNO055, GNSS SAM-M10Q, lidar LW20/C, carte SD.</li><li>Alimentation : batterie LiPo 7,4 V, convertisseur buck vers 5 V et régulateurs LDO 3,3 V, dont un commandable pour le module LoRa.</li><li>Trois versions du PCB : la V1 avait des erreurs (empreinte du buck, signal d&#x27;activation mal routé), corrigées en V2 puis nettoyées en V3.</li><li>Carte d&#x27;interface homme-machine : écran OLED et LEDs adressables pour suivre l&#x27;état du CanSat avant le lancement.</li></ul><h3>Logiciel embarqué</h3><ul><li>FreeRTOS avec quatre tâches : machine à états, capteurs, LoRa et carte SD, reliées par des files de messages.</li><li>Un paquet de télémétrie unifié à 10 Hz, envoyé en LoRa et enregistré sur la carte SD en CSV.</li><li>Machine à états du vol : veille, configuration, prêt, ascension, chute, récupération. Elle s&#x27;appuie sur le lidar et le baromètre pour décider de l&#x27;état et couper les capteurs inutiles.</li></ul><h3>Station sol</h3><ul><li>Application PyQt5 sur Raspberry Pi 5 qui reçoit la télémétrie LoRa.</li><li>Rendu 3D de l&#x27;orientation du satellite, carte OpenStreetMap, courbes en temps réel avec calcul de la vitesse verticale.</li><li>Traitement après vol : FFT, filtre de Kalman et fusion du nuage de points du lidar.</li></ul><h3>Essais mécaniques</h3><ul><li>Soufflerie construite par l&#x27;équipe avec deux moteurs brushless contrarotatifs, jusqu&#x27;à 60 km/h, pour tester les parachutes.</li><li>Parachutes pilotes découpés au laser dans une veste coupe-vent, chaînés pour régler la force de traction.</li><li>Parachute principal dimensionné par calcul à vitesse stabilisée : 2 à 5 m/s visés, diamètre retenu 45 cm.</li><li>Premiers essais de largage avec un drone prêté par un professeur.</li></ul>
+<h3>Ce que j'ai fait</h3>
+<div class="todo">À compléter : ta part dans ce projet (PCB, firmware, station sol, mécanique…).</div>
+<div class="links">
+<a class="btn primary" href="https://github.com/Alexei-Orlov/2526_Projet2A_Cansat" target="_blank" rel="noopener">Voir le code sur GitHub</a>
+<a class="btn" href="../index.html">Tous les projets</a>
+</div>
+</article></main>
+<footer class="site">Contact : à compléter (e-mail, LinkedIn, GitHub)</footer>
+</div>
+</body>
+</html>

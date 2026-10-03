@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PAMI : carte électronique d&#x27;un robot pour la Coupe de France de Robotique — Jean</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+<h1><a href="../index.html" style="color:inherit;text-decoration:none">Jean</a></h1>
+<p>Étudiant ingénieur à l&#x27;ENSEA, en électronique et informatique. Voici mes projets, expliqués : ce que chacun fait, comment il est construit et ce que j&#x27;en ai tiré.</p>
+</header>
+<main><article class="project">
+<a class="back" href="../index.html">Retour aux projets</a>
+<h1>PAMI : carte électronique d&#x27;un robot pour la Coupe de France de Robotique</h1>
+<p class="meta">2026 · Projet de première année · équipe de 7</p>
+<div class="tags"><span class="tag">KiCad</span><span class="tag">STM32H573</span><span class="tag">PCB 4 couches</span><span class="tag">TB6612FNG</span><span class="tag">Impression 3D</span></div>
+<p class="lead">Conception et fabrication du PCB principal d&#x27;un robot : alimentation, microcontrôleur STM32, pilotage des moteurs et capteurs.</p>
+<dl class="facts"><dt>Contexte</dt><dd>Coupe de France de Robotique 2026, équipe TEAM SCRAT (ARES-ENSEA)</dd><dt>Microcontrôleur</dt><dd>STM32H573RIT6</dd><dt>Carte</dt><dd>PCB 4 couches, 90 × 60 mm, fabriqué chez JLCPCB (5 exemplaires)</dd><dt>Outils</dt><dd>KiCad 9, STM32CubeIDE, ST-Link</dd></dl>
+<h3>Le projet</h3><p>Le robot PAMI a besoin d&#x27;une carte qui supervise ses actionneurs, gère l&#x27;alimentation et se connecte aux capteurs. Nous l&#x27;avons conçue de zéro : cahier des charges, schéma, routage, fabrication, puis tests.</p><h3>Comment la carte est construite</h3><ul><li>Alimentation : batterie 7,5 V, régulateur 5 V pour les LEDs NeoPixel et régulateur 3,3 V pour les drivers et les capteurs, avec une LED témoin par rail.</li><li>Cerveau : un STM32H573 avec horloge externe et connecteur de debug ST-Link.</li><li>Moteurs : un driver TB6612FNG pour 2 moteurs DC et 1 servomoteur.</li><li>Capteurs : un capteur de distance TOF en I²C et un capteur infrarouge.</li><li>Interface : 3 boutons de test et 6 LEDs NeoPixel pour l&#x27;animation du robot.</li><li>Mécanique : toutes les pièces du robot sont imprimées en 3D (deux étages et les roues), pour pouvoir les modifier vite.</li></ul><h3>Résultats</h3><ul><li>Rails d&#x27;alimentation 5 V et 3,3 V mesurés et conformes.</li><li>Flash du STM32, pilotage des moteurs et capteur TOF validés.</li><li>Capteur infrarouge partiellement validé : détection trop sensible, réponse quasi binaire, donc pas de nuances pour distinguer les couleurs.</li></ul><h3>Difficultés rencontrées</h3><ul><li>Erreur d&#x27;empreinte sur les NeoPixels, qui causait un court-circuit.</li><li>Empreinte du régulateur 5 V incorrecte : il a fallu le monter à l&#x27;envers.</li><li>Court-circuit sur le processeur ou le driver après une manipulation, localisé grâce à deux points chauds visibles à la caméra thermique.</li></ul>
+<h3>Ce que j'ai fait</h3>
+<div class="todo">À compléter : ta part dans ce projet (schéma, routage, firmware, tests, mécanique…).</div>
+<div class="links">
+<a class="btn primary" href="https://github.com/YaayY360/PAMI-ENSEA--Coupe-de-france-2026" target="_blank" rel="noopener">Voir le code sur GitHub</a>
+<a class="btn" href="../index.html">Tous les projets</a>
+</div>
+</article></main>
+<footer class="site">Contact : à compléter (e-mail, LinkedIn, GitHub)</footer>
+</div>
+</body>
+</html>
